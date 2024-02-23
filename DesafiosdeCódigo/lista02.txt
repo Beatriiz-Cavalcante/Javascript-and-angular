@@ -1,0 +1,167 @@
+DESAFIO 1
+
+//Desafios JavaScript na DIO têm funções "gets" e "print" acessíveis globalmente:
+//- "gets" : lê UMA linha com dado(s) de entrada (inputs) do usuário;
+//- "print": imprime um texto de saída (output), pulando linha.
+
+//TODO: Crie um objeto chamado contaBancaria para armazenar informações da conta.
+let contaBancaria = {
+
+  // Obtém o nome do cliente da conta:
+  cliente: gets(),
+
+//TODO: Agora crie as demais propriedades numeroConta e saldoInicial:
+ numeroConta: gets(),
+ saldoInicial: parseFloat(gets()),
+};
+
+// Impressão das informações: Nome, Número da Conta e Saldo:
+print(`Nome do cliente: ` + contaBancaria.cliente);
+print(`Número da conta: ` + contaBancaria.numeroConta);
+print(`Saldo: R$ `+ contaBancaria.saldoInicial.toFixed(2));
+
+DESAFIO 2
+
+// TODO: Crie o objeto JSON do Cliente 1 e suas propriedades (conta e saldo):
+const cliente1  = { 
+  nome: gets(), 
+  conta: parseInt(gets()),
+  saldo: parseFloat(gets()),
+};
+
+// TODO: Crie o objeto JSON do Cliente 2 e suas propriedades (nome, conta e saldo):
+const cliente2 = { 
+  nome: gets(), 
+  conta: parseInt(gets()),
+  saldo: parseFloat(gets()),
+};
+
+//TODO: Compare os JSONs (nome, conta, saldo) dos Clientes, verificando se todas as propriedades são iguais:
+
+if ((cliente1.nome === cliente2.nome) && (cliente1.conta === cliente2.conta) && (cliente1.saldo === cliente2.saldo)){
+ print("As contas bancárias são iguais.");
+} else {
+  print("As contas bancárias são diferentes.")
+}
+
+DESAFIO 3
+
+//Desafios JavaScript na DIO têm funções "gets" e "print" acessíveis globalmente:
+//- "gets" : lê UMA linha com dado(s) de entrada (inputs) do usuário;
+//- "print": imprime um texto de saída (output), pulando linha.
+
+
+// Objeto chamado contaBancaria com o nome do cliente e saldo inicial:
+const contaBancaria = {
+  nomeCliente: "João",
+  saldo: 1000.0,
+};
+
+// Define-se uma função chamada realizarOperacao:
+function realizarOperacao() {
+  // Obtém uma opção do usuário e converte para um número inteiro.
+  const opcao = parseInt(gets());
+
+  // Criamos uma estrutura condicional switch para lidar com as diferentes operações com base na opção selecionada:
+  switch (opcao) {
+    // Caso a opção seja 1 (Depósito).
+    case 1:
+      // Obtém o valor do depósito do usuário.
+      const valorDeposito = parseFloat(gets());
+      // Adiciona o valor do depósito ao saldo da conta.
+      contaBancaria.saldo += valorDeposito;
+      // Imprime a confirmação do depósito e o saldo atual formatado.
+      print("Operação de depósito concluída.");
+      print(`Saldo atual: R$ ${contaBancaria.saldo.toFixed(2)}`);
+      break;
+
+    // Caso a opção seja 2 (Saque).
+    case 2:
+      // Obtém o valor do saque do usuário.
+      const valorSaque = parseFloat(gets());
+      // TODO: Verifique se o saldo é suficiente para o saque:
+      if (contaBancaria.saldo >= valorSaque) {
+           // TODO: Subtraia o valor do saque do saldo da conta:
+           contaBancaria.saldo -= valorSaque;
+           print("Operação de saque concluída.");
+           // TODO: Imprima a confirmação do saque e o saldo atual formatado:
+           print(`Saldo atual: R$ ${contaBancaria.saldo.toFixed(2)} `);
+      } else {
+           print("Saldo insuficiente. Operação de saque cancelada.");
+           // TODO: Se o saldo for insuficiente, imprima uma mensagem de erro e o saldo atual:
+           print(`Saldo atual: R$ ${contaBancaria.saldo.toFixed(2)} `);
+      }
+      break;
+
+    // Caso a opção seja 3 (Verificar Saldo).
+    case 3:
+      // TODO: Imprima o saldo atual formatado:
+      print(`Saldo atual: R$ ${contaBancaria.saldo.toFixed(2)}`);
+      break;
+
+    // Caso a opção seja 4 (Encerrar o programa).
+    case 4:
+      // Imprime uma mensagem de encerramento e retorna da função, encerrando o programa.
+      print("Encerrando o programa.");
+      return;
+
+    // Se a opção não corresponder a nenhum dos casos anteriores.
+    default:
+      // Imprime uma mensagem de opção inválida.
+      print("Opção inválida.");
+  }
+}
+
+// Chama a função realizarOperacao para iniciar o programa.
+realizarOperacao();
+
+DESAFIO 4
+
+const contaBancaria = {
+  nomeCliente: "",
+  saldo: 0,
+};
+
+contaBancaria.nomeCliente = gets();
+contaBancaria.saldo = parseFloat(gets());
+
+const numOperacoes = parseInt(gets());
+
+// TODO: Crie um loop for para iterar sobre o número de operações especificado:
+for ( let i=0; i < numOperacoes; i++ ) {
+  const tipoOperacao = gets();
+  const valorOperacao = parseFloat(gets())
+
+ // TODO: Verifique o tipo de operação (saque) e atualize o saldo da conta bancária:
+  if (tipoOperacao.toLowerCase() === "depósito") {
+    // Se for um depósito, adiciona o valor ao saldo.
+    contaBancaria.saldo += valorOperacao;
+  } else if ( tipoOperacao.toLowerCase() === "saque" ) {
+    // Se for um saque, subtrai o valor do saldo.
+    contaBancaria.saldo -= valorOperacao;
+  }
+}
+
+// Imprime o nome do cliente da conta bancária;
+print(`Nome do cliente: ${contaBancaria.nomeCliente}`);
+// Imprime o saldo final da conta bancária formatado como moeda brasileira (R$) com duas casas decimais.
+print(`Saldo final: R$ ${contaBancaria.saldo.toFixed(2)}`);
+
+DESAFIO 5
+
+const contaBancaria = {
+  investimentoInicial: parseFloat(gets()),
+  taxaJurosMensal: parseFloat(gets()),
+  periodoMeses: parseInt(gets()),
+};
+
+// TODO: Calcule a taxa de juros mensal em formato decimal (0 a 1) a partir da taxa percentual fornecida:
+const juros = contaBancaria.taxaJurosMensal/100;
+// TODO: Calcule o montante (valor total após o investimento) usando a fórmula de juros compostos.
+const montante = contaBancaria.investimentoInicial * ((1+ juros)**contaBancaria.periodoMeses);
+
+// É impresso informações sobre o investimento:
+print("Investimento: " + contaBancaria.investimentoInicial.toFixed(2));
+print("Juros: " + contaBancaria.taxaJurosMensal);
+print("Período: " + contaBancaria.periodoMeses);
+print("Resultado: " + montante.toFixed(2));
