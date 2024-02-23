@@ -1,4 +1,6 @@
 <div>
-    <button>{{ label }}</button>
-    <button>{{buttonTexts[1]}}</button>
+    <button (click)="getAlert()">{{ label }}</button>
+    <button (mouseover) = "getAlert2()">{{buttonTexts[1]}}</button>
 </div>
+
+<!--Colchetes para propriedades e parêntesis para evento-->
