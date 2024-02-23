@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 
 @Component ({
     selector: 'my-button',
@@ -7,5 +7,7 @@ import { Component } from "@angular/core";
 })
 
 export class ButtonComponent {
-
+    buttonText: string = 'acessar';
+    buttonTexts: string[] = ['indisponível','Disponível'];
+    @Input() label: string='';
 }
