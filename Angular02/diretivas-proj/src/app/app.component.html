@@ -1,0 +1,9 @@
+
+<app-card *ngIf="isAliveCard; else apelido"></app-card>
+<ng-template #apelido>
+  <h1>Ola sou um bloco secreto</h1>
+</ng-template>
+<app-comp-atributos>
+  <p>eu vim de fora</p>
+</app-comp-atributos>
+<router-outlet></router-outlet>
